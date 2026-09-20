@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booyah Wars - বাংলাদেশের সেরা ফ্রি ফায়ার টুর্নামেন্ট অ্যাপ</title>
+  
+  <!-- ব্রাউজার ট্যাবে লোগো (Favicon) -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,6 +31,16 @@
       color: inherit;
     }
 
+    /* Logo Image Style */
+    .brand-logo-img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(255, 165, 0, 0.4);
+    }
+
     /* Header Navbar */
     .header {
       display: flex;
@@ -46,19 +60,6 @@
       gap: 10px;
       font-weight: 700;
       font-size: 1.15rem;
-    }
-
-    .logo-badge {
-      width: 32px;
-      height: 32px;
-      background: #a3ff00;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-size: 16px;
-      font-weight: 800;
     }
 
     .nav-links {
@@ -459,7 +460,7 @@
   <!-- Top Navbar -->
   <header class="header">
     <div class="brand">
-      <div class="logo-badge">BW</div>
+      <img src="favicon.png" alt="Booyah Wars Logo" class="brand-logo-img">
       Booyah Wars
     </div>
     <nav class="nav-links">
@@ -642,7 +643,7 @@
       <!-- App Spec Card -->
       <div class="spec-card">
         <div class="spec-header">
-          <div class="logo-badge" style="width: 38px; height: 38px; font-size: 1.1rem;">BW</div>
+          <img src="favicon.png" alt="Booyah Wars Logo" class="brand-logo-img" style="width: 40px; height: 40px; border-radius: 10px;">
           <div>
             <b>Booyah Wars</b>
             <span style="font-size: 0.75rem; color:#7b8290; display:block;">ফ্রি ফায়ার টুর্নামেন্ট</span>
@@ -675,7 +676,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="brand" style="margin-bottom: 8px;">
-          <div class="logo-badge" style="width: 26px; height: 26px; font-size: 0.8rem;">BW</div>
+          <img src="favicon.png" alt="Booyah Wars Logo" class="brand-logo-img" style="width: 26px; height: 26px; border-radius: 6px;">
           Booyah Wars
         </div>
         <p style="font-size: 0.78rem;">
@@ -714,5 +715,5 @@
   </footer>
 
 </body>
-    </html>
-    
+            </html>
+  
