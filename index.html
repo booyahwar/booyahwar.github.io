@@ -1,1514 +1,366 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="Booyah Wars - বাংলাদেশের Free Fire Tournament Platform">
-<meta name="theme-color" content="#07080c">
-
-<title>Booyah Wars - Free Fire Tournament</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,"Noto Sans Bengali",sans-serif;
-    background:#07080c;
-    color:#fff;
-    line-height:1.6;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-:root{
-    --yellow:#ffc400;
-    --yellow2:#ffdb55;
-    --bg:#07080c;
-    --card:#0e1119;
-    --border:rgba(255,196,0,.20);
-    --muted:#999ca7;
-}
-
-/* ================= HEADER ================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:999;
-    background:rgba(7,8,12,.94);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,196,0,.12);
-}
-
-.container{
-    width:min(1080px,92%);
-    margin:auto;
-}
-
-.nav{
-    min-height:65px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:900;
-}
-
-.brand-logo{
-    width:40px;
-    height:40px;
-    border-radius:12px;
-    display:grid;
-    place-items:center;
-    background:radial-gradient(circle,#ffdf68,#6e4b00 45%,#17130b 72%);
-    border:1px solid var(--yellow);
-    box-shadow:0 0 20px rgba(255,196,0,.25);
-    font-size:20px;
-}
-
-.brand span{
-    font-size:17px;
-}
-
-.nav-links{
-    display:flex;
-    gap:22px;
-    color:#c9cad0;
-    font-size:14px;
-}
-
-.nav-links a:hover{
-    color:var(--yellow);
-}
-
-.nav-btn{
-    background:var(--yellow);
-    color:#151100;
-    padding:9px 15px;
-    border-radius:9px;
-    font-weight:800;
-    font-size:13px;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:620px;
-    display:grid;
-    place-items:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-    padding:75px 0 60px;
-
-    background:
-    radial-gradient(circle at 50% 25%,rgba(255,196,0,.15),transparent 30%),
-    radial-gradient(circle at 15% 70%,rgba(255,196,0,.06),transparent 25%),
-    #07080c;
-}
-
-.hero:before,
-.hero:after{
-    content:"";
-    position:absolute;
-    border:1px solid rgba(255,196,0,.07);
-    border-radius:50%;
-}
-
-.hero:before{
-    width:600px;
-    height:600px;
-}
-
-.hero:after{
-    width:850px;
-    height:850px;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-}
-
-.hero-logo{
-    width:105px;
-    height:105px;
-    margin:0 auto 20px;
-    border-radius:30px;
-    display:grid;
-    place-items:center;
-    font-size:48px;
-
-    background:
-    radial-gradient(circle,#ffda4e,#704d00 35%,#17130b 70%);
-
-    border:2px solid #d79d00;
-
-    box-shadow:
-    0 0 35px rgba(255,196,0,.25),
-    inset 0 0 25px rgba(255,196,0,.18);
-}
-
-.eyebrow{
-    display:inline-block;
-    color:var(--yellow2);
-    border:1px solid rgba(255,196,0,.30);
-    background:rgba(255,196,0,.07);
-    padding:5px 13px;
-    border-radius:50px;
-    font-size:12px;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:clamp(30px,6vw,60px);
-    line-height:1.12;
-    max-width:850px;
-    margin:auto;
-    font-weight:950;
-}
-
-h1 span{
-    color:var(--yellow);
-}
-
-.hero p{
-    color:var(--muted);
-    max-width:650px;
-    margin:18px auto 28px;
-    font-size:15px;
-}
-
-.hero-actions{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:13px 20px;
-    border-radius:11px;
-    font-weight:900;
-    font-size:14px;
-    transition:.2s;
-}
-
-.btn-primary{
-    background:var(--yellow);
-    color:#161200;
-    box-shadow:0 8px 25px rgba(255,196,0,.16);
-}
-
-.btn-primary:hover{
-    transform:translateY(-2px);
-    background:#ffd52e;
-}
-
-.btn-outline{
-    border:1px solid #383b46;
-    background:#11131a;
-    color:#eee;
-}
-
-.btn-outline:hover{
-    border-color:var(--yellow);
-    color:var(--yellow);
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    margin-top:-35px;
-    position:relative;
-    z-index:5;
-}
-
-.stats-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:13px;
-}
-
-.stat{
-    background:linear-gradient(145deg,#11141d,#0c0e14);
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:21px 14px;
-    text-align:center;
-}
-
-.stat-icon{
-    font-size:22px;
-    color:var(--yellow);
-}
-
-.stat strong{
-    display:block;
-    font-size:25px;
-}
-
-.stat small{
-    color:#8f929d;
-    font-size:12px;
-}
-
-/* ================= SECTION ================= */
-
-section{
-    padding:85px 0;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:38px;
-}
-
-.section-title .mini{
-    color:var(--yellow);
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:1.2px;
-    text-transform:uppercase;
-    margin-bottom:7px;
-}
-
-.section-title h2{
-    font-size:clamp(26px,4vw,38px);
-}
-
-.section-title p{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:8px;
-}
-
-/* ================= TOURNAMENT ================= */
-
-.tournaments{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.t-card{
-    position:relative;
-    overflow:hidden;
-    min-height:245px;
-    padding:16px;
-
-    border:1px solid #262a35;
-    border-radius:15px;
-
-    background:
-    radial-gradient(circle at 50% 10%,rgba(255,196,0,.13),transparent 32%),
-    linear-gradient(145deg,#151923,#0c0e14);
-
-    transition:.25s;
-}
-
-.t-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(255,196,0,.45);
-}
-
-.badge{
-    display:inline-block;
-    padding:3px 7px;
-    border-radius:5px;
-    background:var(--yellow);
-    color:#171200;
-    font-size:9px;
-    font-weight:900;
-    position:absolute;
-    right:10px;
-    top:10px;
-}
-
-.t-image{
-    height:105px;
-    border-radius:11px;
-    display:grid;
-    place-items:center;
-    font-size:43px;
-    margin-bottom:13px;
-
-    border:1px solid rgba(255,255,255,.06);
-
-    background:
-    linear-gradient(135deg,rgba(255,196,0,.15),rgba(0,0,0,.35)),
-    radial-gradient(circle at 70% 40%,#3b3220,#101219 58%);
-}
-
-.t-card h3{
-    font-size:17px;
-}
-
-.t-card p{
-    color:#858894;
-    font-size:11px;
-    margin:4px 0 10px;
-}
-
-.meta{
-    display:flex;
-    justify-content:space-between;
-    gap:8px;
-    color:#b7bac3;
-    font-size:10px;
-}
-
-.meta b{
-    color:var(--yellow);
-}
-
-/* ================= FEATURES ================= */
-
-.feature-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.feature{
-    padding:25px 18px;
-    text-align:center;
-    border:1px solid #252832;
-    border-radius:15px;
-    background:#0d1017;
-}
-
-.feature .ico{
-    width:48px;
-    height:48px;
-    border-radius:14px;
-    display:grid;
-    place-items:center;
-    margin:0 auto 13px;
-
-    color:var(--yellow);
-    background:rgba(255,196,0,.07);
-    border:1px solid rgba(255,196,0,.18);
-
-    font-size:21px;
-}
-
-.feature h3{
-    font-size:15px;
-    margin-bottom:5px;
-}
-
-.feature p{
-    color:#858894;
-    font-size:11px;
-}
-
-/* ================= STEPS ================= */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.step{
-    background:#0e1118;
-    border:1px solid #262a35;
-    border-radius:15px;
-    padding:22px 17px;
-}
-
-.num{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-
-    background:var(--yellow);
-    color:#171200;
-
-    font-weight:900;
-    font-size:13px;
-
-    margin-bottom:14px;
-}
-
-.step h3{
-    font-size:14px;
-    margin-bottom:5px;
-}
-
-.step p{
-    font-size:11px;
-    color:#858894;
-}
-
-/* ================= FAQ ================= */
-
-.faq{
-    max-width:760px;
-    margin:auto;
-    display:grid;
-    gap:10px;
-}
-
-details{
-    background:#0d1017;
-    border:1px solid #272b36;
-    border-radius:12px;
-    padding:0 16px;
-}
-
-summary{
-    cursor:pointer;
-    list-style:none;
-    padding:16px 0;
-    font-size:13px;
-    font-weight:800;
-}
-
-summary::-webkit-details-marker{
-    display:none;
-}
-
-details p{
-    color:#9699a4;
-    font-size:12px;
-    padding:0 0 16px;
-}
-
-details[open]{
-    border-color:rgba(255,196,0,.28);
-}
-
-/* ================= CTA ================= */
-
-.cta{
-    padding:45px 25px;
-
-    border:1px solid rgba(255,196,0,.25);
-    border-radius:20px;
-
-    text-align:center;
-
-    background:
-    radial-gradient(circle at 50% 0,rgba(255,196,0,.14),transparent 55%),
-    #0d1017;
-}
-
-.cta h2{
-    font-size:clamp(24px,4vw,36px);
-}
-
-.cta p{
-    color:#9295a0;
-    max-width:600px;
-    margin:9px auto 22px;
-    font-size:13px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid #1e212b;
-    padding:35px 0 25px;
-    color:#777b87;
-    font-size:11px;
-}
-
-.footer-top{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.footer-brand{
-    color:#fff;
-    font-weight:900;
-    font-size:15px;
-}
-
-.footer-links{
-    display:flex;
-    gap:16px;
-    flex-wrap:wrap;
-}
-
-.footer-links a:hover{
-    color:var(--yellow);
-}
-
-.copyright{
-    text-align:center;
-    border-top:1px solid #191c24;
-    margin-top:25px;
-    padding-top:20px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:850px){
-
-    .nav-links{
-        display:none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booyah Wars - বাংলাদেশের ১ নম্বর ফ্রি ফায়ার টুর্নামেন্ট প্ল্যাটফর্ম</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Font (Hind Siliguri) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+      background-color: #0b0c10;
+      color: #ffffff;
     }
-
-    .stats-grid{
-        grid-template-columns:repeat(2,1fr);
+    .gold-gradient-text {
+      background: linear-gradient(180deg, #ffde59 0%, #ff9100 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    .tournaments{
-        grid-template-columns:repeat(2,1fr);
+    .gold-btn {
+      background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
     }
-
-    .feature-grid,
-    .steps{
-        grid-template-columns:repeat(2,1fr);
+    .card-border {
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      background: #121318;
     }
-}
-
-@media(max-width:520px){
-
-    .hero{
-        min-height:600px;
-        padding-top:55px;
-    }
-
-    .hero-logo{
-        width:85px;
-        height:85px;
-        font-size:38px;
-    }
-
-    .stats-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:9px;
-    }
-
-    .stat{
-        padding:16px 8px;
-    }
-
-    .stat strong{
-        font-size:20px;
-    }
-
-    .tournaments{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-    .t-card{
-        min-height:225px;
-        padding:11px;
-    }
-
-    .t-image{
-        height:90px;
-        font-size:35px;
-    }
-
-    .feature-grid,
-    .steps{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-    }
-
-    .feature{
-        padding:18px 10px;
-    }
-
-    section{
-        padding:65px 0;
-    }
-
-    .brand span{
-        font-size:15px;
-    }
-
-    .nav-btn{
-        padding:8px 11px;
-        font-size:11px;
-    }
-}
-
-</style>
+  </style>
 </head>
-
-
-<body>
-
-
-<!-- ================= HEADER ================= -->
-
-<header>
-
-<div class="container nav">
-
-<a href="#" class="brand">
-
-<div class="brand-logo">
-⚡
-</div>
-
-<span>Booyah Wars</span>
-
-</a>
-
-
-<nav class="nav-links">
-
-<a href="#tournaments">
-টুর্নামেন্ট
-</a>
-
-<a href="#features">
-কেন আমরা
-</a>
-
-<a href="#how">
-কীভাবে খেলবেন
-</a>
-
-<a href="#faq">
-FAQ
-</a>
-
-</nav>
-
-
-<a class="nav-btn" href="#download">
-অ্যাপ ডাউনলোড
-</a>
-
-</div>
-
-</header>
-
-
-
-<main>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-<div class="container hero-content">
-
-
-<div class="hero-logo">
-🏆
-</div>
-
-
-<div class="eyebrow">
-🔥 বাংলাদেশের Free Fire Tournament Platform
-</div>
-
-
-<h1>
-
-বাংলাদেশের
-<span>নেক্সট লেভেল</span>
-
-<br>
-
-Free Fire Tournament
-
-</h1>
-
-
-<p>
-
-Booyah Wars-এ আপনার স্কোয়াড নিয়ে প্রতিযোগিতা করুন,
-বিভিন্ন গেম মোডে অংশ নিন এবং আপনার গেমিং স্কিল দেখান।
-
-</p>
-
-
-<div class="hero-actions">
-
-<a class="btn btn-primary" href="#download">
-📱 অ্যাপ ডাউনলোড
-</a>
-
-
-<a class="btn btn-outline" href="#tournaments">
-🏆 টুর্নামেন্ট দেখুন
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- ================= STATS ================= -->
-
-<div class="container stats">
-
-<div class="stats-grid">
-
-
-<div class="stat">
-
-<div class="stat-icon">
-🏆
-</div>
-
-<strong>
-১০০+
-</strong>
-
-<small>
-টুর্নামেন্ট
-</small>
-
-</div>
-
-
-
-<div class="stat">
-
-<div class="stat-icon">
-👥
-</div>
-
-<strong>
-২০,০০০+
-</strong>
-
-<small>
-প্লেয়ার
-</small>
-
-</div>
-
-
-
-<div class="stat">
-
-<div class="stat-icon">
-⚡
-</div>
-
-<strong>
-২৪/৭
-</strong>
-
-<small>
-অ্যাক্টিভ সাপোর্ট
-</small>
-
-</div>
-
-
-
-<div class="stat">
-
-<div class="stat-icon">
-🛡️
-</div>
-
-<strong>
-১০০%
-</strong>
-
-<small>
-ফেয়ার প্লে
-</small>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- ================= TOURNAMENT ================= -->
-
-<section id="tournaments">
-
-<div class="container">
-
-
-<div class="section-title">
-
-<div class="mini">
-Featured Matches
-</div>
-
-<h2>
-জনপ্রিয়
-<span style="color:var(--yellow)">
-টুর্নামেন্ট মোড
-</span>
-</h2>
-
-<p>
-আপনার পছন্দের গেম মোড বেছে নিয়ে ম্যাচে অংশ নিন।
-</p>
-
-</div>
-
-
-
-<div class="tournaments">
-
-
-<!-- CARD 1 -->
-
-<article class="t-card">
-
-<span class="badge">
-HOT
-</span>
-
-<div class="t-image">
-⚔️
-</div>
-
-<h3>
-Battle Royale
-</h3>
-
-<p>
-BR Match — Squad battle
-</p>
-
-<div class="meta">
-
-<span>
-Entry:
-<b>৳10</b>
-</span>
-
-<span>
-Prize:
-<b>৳500+</b>
-</span>
-
-</div>
-
-</article>
-
-
-
-<!-- CARD 2 -->
-
-<article class="t-card">
-
-<span class="badge">
-POPULAR
-</span>
-
-<div class="t-image">
-💥
-</div>
-
-<h3>
-Clash Squad
-</h3>
-
-<p>
-Fast & competitive CS match
-</p>
-
-<div class="meta">
-
-<span>
-Entry:
-<b>৳10</b>
-</span>
-
-<span>
-Prize:
-<b>৳500+</b>
-</span>
-
-</div>
-
-</article>
-
-
-
-<!-- CARD 3 -->
-
-<article class="t-card">
-
-<span class="badge">
-NEW
-</span>
-
-<div class="t-image">
-🎯
-</div>
-
-<h3>
-Lone Wolf
-</h3>
-
-<p>
-1v1 skill-based battle
-</p>
-
-<div class="meta">
-
-<span>
-Entry:
-<b>৳5</b>
-</span>
-
-<span>
-Prize:
-<b>৳200+</b>
-</span>
-
-</div>
-
-</article>
-
-
-
-<!-- CARD 4 -->
-
-<article class="t-card">
-
-<span class="badge">
-FREE
-</span>
-
-<div class="t-image">
-⚡
-</div>
-
-<h3>
-Free Match
-</h3>
-
-<p>
-Practice your skills
-</p>
-
-<div class="meta">
-
-<span>
-Entry:
-<b>৳0</b>
-</span>
-
-<span>
-Prize:
-<b>Special</b>
-</span>
-
-</div>
-
-</article>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= FEATURES ================= -->
-
-<section id="features">
-
-<div class="container">
-
-
-<div class="section-title">
-
-<div class="mini">
-Why Booyah Wars
-</div>
-
-<h2>
-কেন
-<span style="color:var(--yellow)">
-Booyah Wars?
-</span>
-</h2>
-
-<p>
-সহজ, দ্রুত এবং প্রতিযোগিতামূলক tournament experience।
-</p>
-
-</div>
-
-
-
-<div class="feature-grid">
-
-
-<div class="feature">
-
-<div class="ico">
-🎟️
-</div>
-
-<h3>
-সহজে ম্যাচে যোগ দিন
-</h3>
-
-<p>
-অ্যাপ থেকে সহজেই পছন্দের ম্যাচ বেছে নিন।
-</p>
-
-</div>
-
-
-
-<div class="feature">
-
-<div class="ico">
-🏆
-</div>
-
-<h3>
-বিভিন্ন Tournament
-</h3>
-
-<p>
-BR, CS, Lone Wolf সহ বিভিন্ন মোড।
-</p>
-
-</div>
-
-
-
-<div class="feature">
-
-<div class="ico">
-🔑
-</div>
-
-<h3>
-সহজ Room System
-</h3>
-
-<p>
-ম্যাচ শুরু হলে room details সহজেই দেখুন।
-</p>
-
-</div>
-
-
-
-<div class="feature">
-
-<div class="ico">
-🛡️
-</div>
-
-<h3>
-Fair Play
-</h3>
-
-<p>
-নিয়ম মেনে প্রতিযোগিতামূলক পরিবেশ।
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= HOW TO PLAY ================= -->
-
-<section id="how">
-
-<div class="container">
-
-
-<div class="section-title">
-
-<div class="mini">
-How To Play
-</div>
-
-<h2>
-কীভাবে খেলবেন?
-</h2>
-
-<p>
-মাত্র কয়েকটি ধাপেই আপনার প্রথম ম্যাচে যোগ দিন।
-</p>
-
-</div>
-
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="num">
-১
-</div>
-
-<h3>
-অ্যাপ ডাউনলোড করুন
-</h3>
-
-<p>
-Booyah Wars অ্যাপটি ডাউনলোড করে ইনস্টল করুন।
-</p>
-
-</div>
-
-
-
-<div class="step">
-
-<div class="num">
-২
-</div>
-
-<h3>
-অ্যাকাউন্ট তৈরি করুন
-</h3>
-
-<p>
-প্রয়োজনীয় তথ্য দিয়ে আপনার প্রোফাইল তৈরি করুন।
-</p>
-
-</div>
-
-
-
-<div class="step">
-
-<div class="num">
-৩
-</div>
-
-<h3>
-ম্যাচ বেছে নিন
-</h3>
-
-<p>
-আপনার পছন্দের tournament এবং game mode নির্বাচন করুন।
-</p>
-
-</div>
-
-
-
-<div class="step">
-
-<div class="num">
-৪
-</div>
-
-<h3>
-খেলুন ও জিতুন
-</h3>
-
-<p>
-Room details অনুসরণ করে ম্যাচে অংশ নিন।
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= FAQ ================= -->
-
-<section id="faq">
-
-<div class="container">
-
-
-<div class="section-title">
-
-<div class="mini">
-Frequently Asked Questions
-</div>
-
-<h2>
-সাধারণ প্রশ্নাবলী
-<span style="color:var(--yellow)">
-(FAQ)
-</span>
-</h2>
-
-</div>
-
-
-
-<div class="faq">
-
-
-<details>
-
-<summary>
-Booyah Wars কী?
-</summary>
-
-<p>
-Booyah Wars একটি Free Fire tournament platform,
-যেখানে বিভিন্ন game mode-এর competitive match সম্পর্কে
-তথ্য ও অংশগ্রহণের সুবিধা দেওয়া হয়।
-</p>
-
-</details>
-
-
-
-<details>
-
-<summary>
-কীভাবে Tournament-এ যোগ দেব?
-</summary>
-
-<p>
-অ্যাপ ডাউনলোড করে account তৈরি করুন,
-তারপর available tournament থেকে আপনার পছন্দের ম্যাচ নির্বাচন করুন।
-</p>
-
-</details>
-
-
-
-<details>
-
-<summary>
-Room ID এবং Password কোথায় পাব?
-</summary>
-
-<p>
-নির্ধারিত ম্যাচের সময় ও নিয়ম অনুযায়ী room details
-অ্যাপের সংশ্লিষ্ট match section-এ দেওয়া হবে।
-</p>
-
-</details>
-
-
-
-<details>
-
-<summary>
-সমস্যা হলে কী করব?
-</summary>
-
-<p>
-Support/Contact Admin অপশন ব্যবহার করে
-Booyah Wars-এর official support-এর সঙ্গে যোগাযোগ করুন।
-</p>
-
-</details>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= DOWNLOAD ================= -->
-
-<section id="download">
-
-<div class="container">
-
-
-<div class="cta">
-
-<h2>
-
-আর দেরি কেন?
-
-<span style="color:var(--yellow)">
-আজই শুরু করুন!
-</span>
-
-</h2>
-
-
-<p>
-Booyah Wars অ্যাপ ডাউনলোড করে আপনার পছন্দের
-tournament-এ অংশ নিন।
-</p>
-
-
-<!-- এখানে আপনার APK LINK বসাবেন -->
-
-<a
-class="btn btn-primary"
-href="YOUR_APK_DOWNLOAD_LINK_HERE"
-target="_blank"
-rel="noopener">
-
-📱 Booyah Wars অ্যাপ ডাউনলোড
-
-</a>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-<div class="container">
-
-
-<div class="footer-top">
-
-
-<div class="footer-brand">
-⚡ Booyah Wars
-</div>
-
-
-<div class="footer-links">
-
-<a href="#tournaments">
-Tournament
-</a>
-
-<a href="#features">
-Features
-</a>
-
-<a href="#how">
-How to Play
-</a>
-
-<a href="#faq">
-FAQ
-</a>
-
-
-<!-- এখানে Telegram link বসাবেন -->
-
-<a
-href="YOUR_TELEGRAM_LINK_HERE"
-target="_blank"
-rel="noopener">
-
-Contact Admin
-
-</a>
-
-</div>
-
-
-</div>
-
-
-
-<div class="copyright">
-
-© <span id="year"></span>
-Booyah Wars. All rights reserved.
-
-</div>
-
-
-</div>
-
-</footer>
-
-
-
-<script>
-
-document.getElementById("year").textContent =
-new Date().getFullYear();
-
-
-document.querySelectorAll('a[href^="#"]').forEach(function(link){
-
-link.addEventListener("click",function(e){
-
-const id=this.getAttribute("href");
-
-if(id && id !== "#"){
-
-const target=document.querySelector(id);
-
-if(target){
-
-e.preventDefault();
-
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}
-
-}
-
-});
-
-});
-
-</script>
-
-
+<body class="bg-[#0b0c10] text-gray-200 antialiased pb-24 selection:bg-amber-500 selection:text-black">
+
+  <!-- Mobile Container Wrapper -->
+  <div class="max-w-md mx-auto min-h-screen relative border-x border-neutral-900 shadow-2xl">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 bg-[#0b0c10]/90 backdrop-blur-md px-4 py-3 border-b border-neutral-800/80 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full border border-amber-500/50 flex items-center justify-center bg-black/60 shadow-[0_0_10px_rgba(245,158,11,0.3)]">
+          <i class="fa-solid fa-fire text-amber-500 text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-wider leading-none text-white flex items-center gap-1">
+            BOOYAH <span class="text-amber-500">WARS</span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="#" class="w-8 h-8 rounded-lg bg-neutral-800 text-sky-400 flex items-center justify-center border border-neutral-700 text-sm">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+        <a href="#download" class="gold-btn text-black font-bold px-3 py-1.5 rounded-lg text-sm flex items-center gap-1.5 hover:brightness-110 transition">
+          <i class="fa-solid fa-download text-xs"></i>
+          <span>ডাউনলোড</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="px-4 pt-6 space-y-10">
+
+      <!-- Hero Section -->
+      <section class="text-center space-y-4 pt-2">
+        <!-- Logo Badge -->
+        <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-amber-500/10 blur-xl"></div>
+          <div class="w-24 h-24 rounded-full border-2 border-amber-500/60 p-1 flex items-center justify-center bg-black/80 relative">
+            <i class="fa-solid fa-shield-cat text-4xl text-amber-500"></i>
+          </div>
+        </div>
+
+        <!-- Live Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          প্রতিদিন ১০০+ লাইভ টুর্নামেন্ট অনুষ্ঠিত হচ্ছে
+        </div>
+
+        <!-- Headline -->
+        <h2 class="text-2xl font-bold leading-snug">
+          বাংলাদেশের ১ নম্বর <br>
+          <span class="gold-gradient-text text-3xl">ফ্রি ফায়ার টুর্নামেন্ট প্ল্যাটফর্ম</span>
+        </h2>
+
+        <!-- Subtext -->
+        <p class="text-xs text-neutral-400 leading-relaxed max-w-sm mx-auto">
+          প্রতিদিন খেলুন ফ্রি ফায়ার ব্যাটেল রয়্যাল, লোন উলফ এবং ক্ল্যাশ স্কোয়াড। নিজের গেম স্কিল দেখিয়ে জিতে নিন হাজার হাজার টাকা, সরাসরি বিকাশ ও নগদে ইনস্ট্যান্ট ক্যাশআউট!
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="space-y-3 pt-2">
+          <a href="#" class="gold-btn w-full block text-black font-bold py-3.5 px-4 rounded-xl text-center shadow-lg transition active:scale-95">
+            <div class="flex items-center justify-center gap-2 text-base">
+              <i class="fa-brands fa-android text-lg"></i>
+              <span>অ্যাপ ডাউনলোড করুন</span>
+            </div>
+            <span class="text-[11px] block font-normal opacity-90 mt-0.5">(ভার্সন ৪.০ • ১২ MB • অ্যান্ড্রয়েড)</span>
+          </a>
+
+          <a href="#tournaments" class="block w-full py-3 px-4 rounded-xl bg-neutral-900 border border-neutral-700/60 text-neutral-300 font-semibold text-sm hover:bg-neutral-800 transition">
+            <i class="fa-solid fa-gamepad mr-2 text-amber-500"></i> টুর্নামেন্ট দেখুন
+          </a>
+        </div>
+      </section>
+
+      <!-- Stats Grid -->
+      <section class="grid grid-cols-2 gap-3">
+        <div class="card-border rounded-xl p-4 text-center">
+          <i class="fa-solid fa-trophy text-amber-500 text-xl mb-2"></i>
+          <h3 class="text-xl font-bold text-white">১০+ লাখ ৳</h3>
+          <p class="text-xs text-neutral-400 mt-1">পুরস্কার বিতরণ</p>
+        </div>
+
+        <div class="card-border rounded-xl p-4 text-center">
+          <i class="fa-solid fa-users text-amber-500 text-xl mb-2"></i>
+          <h3 class="text-xl font-bold text-white">৫০,০০০+</h3>
+          <p class="text-xs text-neutral-400 mt-1">সক্রিয় গেমার</p>
+        </div>
+
+        <div class="card-border rounded-xl p-4 text-center">
+          <i class="fa-solid fa-bolt text-amber-500 text-xl mb-2"></i>
+          <h3 class="text-xl font-bold text-white">৫ মিনিট</h3>
+          <p class="text-xs text-neutral-400 mt-1">ইনস্ট্যান্ট উইথড্রয়াল</p>
+        </div>
+
+        <div class="card-border rounded-xl p-4 text-center">
+          <i class="fa-solid fa-shield-halved text-amber-500 text-xl mb-2"></i>
+          <h3 class="text-xl font-bold text-white">১০০%</h3>
+          <p class="text-xs text-neutral-400 mt-1">ফেয়ার প্লে ও অ্যান্টি-হ্যাক</p>
+        </div>
+      </section>
+
+      <!-- Tournament Modes -->
+      <section id="tournaments" class="space-y-4">
+        <div class="text-center space-y-1">
+          <h2 class="text-xl font-bold text-white">জনপ্রিয় টুর্নামেন্ট মোড</h2>
+          <p class="text-xs text-neutral-400">আপনার প্রিয় গেম মোড বেছে নিন এবং টুর্নামেন্টে জয়েন করে ক্যাশ প্রাইজ জিতে নিন</p>
+        </div>
+
+        <!-- Mode Card 1 -->
+        <div class="card-border rounded-2xl overflow-hidden group">
+          <div class="h-32 bg-neutral-800 relative bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600')] bg-cover bg-center">
+            <span class="absolute top-2 right-2 bg-red-600 text-white font-bold text-[10px] px-2 py-0.5 rounded-full">HOT MATCH</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#121318] via-transparent to-black/30"></div>
+            <div class="absolute bottom-2 left-3">
+              <h3 class="text-lg font-bold text-white leading-tight">Battle Royale</h3>
+              <p class="text-[11px] text-neutral-300">বারমুডা ও কালাহারি ম্যাপ</p>
+            </div>
+          </div>
+          <div class="p-3 text-xs space-y-2">
+            <div class="flex justify-between border-b border-neutral-800/80 pb-1.5">
+              <span class="text-neutral-400">ম্যাচ টাইপ</span>
+              <span class="font-semibold text-white">সোলো / ডুয়ো / স্কোয়াড</span>
+            </div>
+            <div class="flex justify-between border-b border-neutral-800/80 pb-1.5">
+              <span class="text-neutral-400">এন্ট্রি ফি</span>
+              <span class="font-bold text-amber-500">১০ টাকা থেকে শুরু</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-400">প্রাইজ পুল</span>
+              <span class="font-bold text-emerald-400">১,০০০ - ৫,০০০ টাকা</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode Card 2 -->
+        <div class="card-border rounded-2xl overflow-hidden">
+          <div class="h-32 bg-neutral-800 relative bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600')] bg-cover bg-center">
+            <span class="absolute top-2 right-2 bg-amber-500 text-black font-bold text-[10px] px-2 py-0.5 rounded-full">4 vs 4</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#121318] via-transparent to-black/30"></div>
+            <div class="absolute bottom-2 left-3">
+              <h3 class="text-lg font-bold text-white leading-tight">Clash Squad</h3>
+              <p class="text-[11px] text-neutral-300">হাই-ভোল্টেজ স্কোয়াড ব্যাটেল</p>
+            </div>
+          </div>
+          <div class="p-3 text-xs space-y-2">
+            <div class="flex justify-between border-b border-neutral-800/80 pb-1.5">
+              <span class="text-neutral-400">ম্যাচ টাইপ</span>
+              <span class="font-semibold text-white">৪ বনাম ৪ স্কোয়াড</span>
+            </div>
+            <div class="flex justify-between border-b border-neutral-800/80 pb-1.5">
+              <span class="text-neutral-400">এন্ট্রি ফি</span>
+              <span class="font-bold text-amber-500">৫০ টাকা থেকে শুরু</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-neutral-400">উইনার প্রাইজ</span>
+              <span class="font-bold text-emerald-400">উচ্চ প্রাইজমানি</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Booyah Wars -->
+      <section class="space-y-4">
+        <div class="text-center space-y-1">
+          <h2 class="text-xl font-bold text-white">কেন <span class="text-amber-500">Booyah Wars</span> সেরা?</h2>
+          <p class="text-xs text-neutral-400">আমরা গেমারদের জন্য নিয়ে এসেছি সবচেয়ে নির্ভরযোগ্য টুর্নামেন্ট সিস্টেম</p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="card-border p-4 rounded-xl flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-wallet text-amber-500"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-white">অটো অ্যাড মানি</h4>
+              <p class="text-xs text-neutral-400 mt-1">বিকাশ, নগদ বা রকেটের মাধ্যমে মাত্র কয়েক সেকেন্ডেই ওয়ালেটে টাকা যোগ করুন।</p>
+            </div>
+          </div>
+
+          <div class="card-border p-4 rounded-xl flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-money-bill-transfer text-amber-500"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-white">দ্রুত উইথড্রয়াল</h4>
+              <p class="text-xs text-neutral-400 mt-1">ম্যাচ জয়ের পর উইথড্র রিকোয়েস্ট দিলেই ৫ থেকে ১০ মিনিটের মধ্যে টাকা সরাসরি পৌঁছে যাবে।</p>
+            </div>
+          </div>
+
+          <div class="card-border p-4 rounded-xl flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-key text-amber-500"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-white">ইন-অ্যাপ রুম কোড</h4>
+              <p class="text-xs text-neutral-400 mt-1">ম্যাচ শুরুর ১০ মিনিট আগে সরাসরি অ্যাপের ভেতর কাস্টম রুম আইডি ও পাসওয়ার্ড দেখতে পাবেন।</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="space-y-3">
+        <div class="text-center mb-4">
+          <h2 class="text-xl font-bold text-white">সাধারণ প্রশ্নোত্তর (FAQ)</h2>
+          <p class="text-xs text-neutral-400">টুর্নামেন্ট সম্পর্কে কিছু গুরুত্বপূর্ণ প্রশ্নের উত্তর</p>
+        </div>
+
+        <!-- Accordion Item 1 -->
+        <div class="card-border rounded-xl overflow-hidden">
+          <button class="w-full p-3.5 text-left flex justify-between items-center text-xs font-bold text-amber-400" onclick="toggleFaq(this)">
+            <span>কাস্টম রুম আইডি ও পাসওয়ার্ড কখন দেওয়া হবে?</span>
+            <i class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+          </button>
+          <div class="px-3.5 pb-3 text-xs text-neutral-300 border-t border-neutral-800/60 pt-2">
+            ম্যাচ শুরু হওয়ার ঠিক ৫ থেকে ১০ মিনিট আগে অ্যাপের ভেতর আপনার জয়েন করা ম্যাচের উপর ক্লিক করলেই সরাসরি রুম আইডি এবং পাসওয়ার্ড দেখতে পাবেন।
+          </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div class="card-border rounded-xl overflow-hidden">
+          <button class="w-full p-3.5 text-left flex justify-between items-center text-xs font-bold text-white" onclick="toggleFaq(this)">
+            <span>উইথড্র করতে সর্বনিম্ন কত টাকা লাগে?</span>
+            <i class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+          </button>
+          <div class="px-3.5 pb-3 text-xs text-neutral-300 border-t border-neutral-800/60 pt-2 hidden">
+            আপনি সর্বনিম্ন ৫০ টাকা হলেই বিকাশ বা নগদের মাধ্যমে নিজের পার্সোনাল নাম্বারে ক্যাশআউট করে নিতে পারবেন।
+          </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div class="card-border rounded-xl overflow-hidden">
+          <button class="w-full p-3.5 text-left flex justify-between items-center text-xs font-bold text-white" onclick="toggleFaq(this)">
+            <span>হ্যাক বা কোনো প্রকার চিটিং করা যাবে কি?</span>
+            <i class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+          </button>
+          <div class="px-3.5 pb-3 text-xs text-neutral-300 border-t border-neutral-800/60 pt-2 hidden">
+            না, কোনো প্রকার হ্যাক, টিমআপ বা থার্ড-পার্টি টুলস সম্পূর্ণ নিষিদ্ধ। কেউ চিটিং করলে অ্যাকাউন্ট আজীবন ব্যান করা হবে।
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Call To Action -->
+      <section class="card-border rounded-2xl p-5 text-center space-y-3 bg-gradient-to-b from-[#181920] to-[#0d0e12]">
+        <h3 class="text-xl font-bold leading-tight">
+          আর দেরি কেন? <br>
+          <span class="gold-gradient-text text-2xl">আজই শুরু হোক যুদ্ধ!</span>
+        </h3>
+        <p class="text-xs text-neutral-400">
+          হাজার হাজার ফ্রি ফায়ার প্লেয়ারদের সাথে ব্যাটেল করে নিজেকে প্রমাণ করুন এবং জিতে নিন বড় অংকের ক্যাশ রিওয়ার্ড।
+        </p>
+        <a href="#" class="gold-btn text-black font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg">
+          <i class="fa-solid fa-fire"></i> Booyah Wars অ্যাপ ডাউনলোড করুন
+        </a>
+      </section>
+
+      <!-- Social and Info Links -->
+      <section class="space-y-2">
+        <a href="#" class="w-full py-2.5 px-4 bg-sky-950/40 border border-sky-600/30 rounded-xl text-sky-400 flex items-center justify-center gap-2 text-xs font-bold">
+          <i class="fa-brands fa-telegram"></i> টেলিগ্রাম আপডেট চ্যানেল
+        </a>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="#" class="py-2.5 px-3 bg-emerald-950/40 border border-emerald-600/30 rounded-xl text-emerald-400 flex items-center justify-center gap-1.5 text-xs font-bold">
+            <i class="fa-solid fa-receipt"></i> পেমেন্ট প্রুফ চ্যানেল
+          </a>
+          <a href="#" class="py-2.5 px-3 bg-red-950/40 border border-red-600/30 rounded-xl text-red-400 flex items-center justify-center gap-1.5 text-xs font-bold">
+            <i class="fa-brands fa-youtube"></i> ইউটিউব চ্যানেল
+          </a>
+        </div>
+        <div class="card-border rounded-xl p-3 text-center text-xs space-y-1">
+          <div class="text-neutral-400">সাপোর্ট অ্যাডমিন: <span class="text-amber-400 font-bold">@BWADMIN02</span></div>
+          <div class="text-neutral-400">অফিসিয়াল ইমেইল: <span class="text-neutral-200">support@booyahwars.top</span></div>
+        </div>
+      </section>
+
+      <!-- Footer Info -->
+      <footer class="text-center text-[11px] text-neutral-500 space-y-2 pb-6 border-t border-neutral-900 pt-4">
+        <div class="flex justify-center gap-3 text-neutral-400">
+          <a href="#" class="hover:underline">প্রাইভেসি পলিসি</a> • 
+          <a href="#" class="hover:underline">শর্তাবলী ও নিয়মাবলী</a> • 
+          <a href="#" class="hover:underline">রিফান্ড পলিসি</a>
+        </div>
+        <p>Project Founder & Director: <span class="text-amber-500 font-semibold">Md. Salman</span></p>
+        <p>© 2026 Booyah Wars — সর্বস্বত্ব সংরক্ষিত</p>
+      </footer>
+
+    </main>
+
+    <!-- Floating Support Badge -->
+    <a href="#" class="fixed bottom-20 right-4 z-40 bg-sky-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 hover:bg-sky-400 transition">
+      <i class="fa-brands fa-telegram"></i>
+      <span>২৪/৭ সাপোর্ট</span>
+    </a>
+
+    <!-- Sticky Bottom Bar -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 bg-[#121318]/95 backdrop-blur-md border-t border-neutral-800 px-4 py-2.5 flex items-center justify-between max-w-md mx-auto">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-lg border border-amber-500/40 bg-black flex items-center justify-center">
+          <i class="fa-solid fa-fire text-amber-500 text-lg"></i>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-white leading-tight">Booyah Wars</h4>
+          <p class="text-[10px] text-neutral-400">ফ্রি ফায়ার টুর্নামেন্ট অ্যাপ</p>
+        </div>
+      </div>
+      <a href="#" class="gold-btn text-black font-bold text-xs px-3.5 py-2 rounded-lg flex items-center gap-1.5 shadow-md">
+        <i class="fa-solid fa-download"></i>
+        <span>ইনস্টল করুন</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Small Script for FAQ Toggle -->
+  <script>
+    function toggleFaq(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      content.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+      button.classList.toggle('text-amber-400');
+      button.classList.toggle('text-white');
+    }
+  </script>
 </body>
-  </html>
+    </html>
+    
